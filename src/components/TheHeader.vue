@@ -37,8 +37,13 @@
       gap: 1.5rem;
 
       & li a {
-        // TODO активный цвет ссылки
+        // TODO активный цвет ссылки + transition hover active
         color: getcolor('black.base', 0.48);
+
+        &:hover {
+          border-bottom: 1px solid #000 ;
+          color: #000;
+        }
       }
     }
 }
