@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:math';
+@use 'sass:color';
+
+@function getcolor($str, $opacity: 1) {
+  $color-array: string.split($str, '.');
+  @if $opacity != 1 {
+      @return color.change(map.get(map.get($colors, list.nth($color-array, 1)), list.nth($color-array, 2)), $alpha: $opacity);
+  } @else {
+      @return map.get(map.get($colors, list.nth($color-array, 1)), list.nth($color-array, 2));
+  }
+}
