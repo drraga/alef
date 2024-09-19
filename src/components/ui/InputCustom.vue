@@ -1,16 +1,20 @@
 <script setup lang="ts">
+import { nanoid } from 'nanoid'
+
 const props = defineProps<{
   inputFields: InputEntity
 }>()
 
 const inputVal = defineModel('inputValue')
+
+const generateId = nanoid();
 </script>
 
 <template>
   <div class="input-custom">
-    <label>{{ props.inputFields.label }}</label>
+    <label :for="generateId">{{ props.inputFields.label }}</label>
   
-    <input :type="props.inputFields.inputType" :name="props.inputFields.label" v-model="inputVal" />
+    <input :id="generateId" :type="props.inputFields.inputType" :name="`${props.inputFields.entityType}-${props.inputFields.type}`" v-model="inputVal" />
   
     <span></span>
   </div>
@@ -22,6 +26,7 @@ const inputVal = defineModel('inputValue')
 
 .input-custom {
   position: relative;
+  flex: auto;
 
   & label {
     position: absolute;

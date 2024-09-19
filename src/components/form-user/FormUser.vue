@@ -2,26 +2,27 @@
 import { ref } from 'vue'
 import InputCustom from '@/components/ui/InputCustom.vue';
 
+
 const fields: InputEntity[] = [
   {
-    id: 'name',
+    type: 'name',
     label: 'имя',
+    entityType: 'user',
     inputType: 'text',
-    
   },
   {
-    id: 'age',
-    label: 'возраст',
+    type: 'age',
+    label: 'возраст', 
+    entityType: 'user',
     inputType: 'number',
   }
 ]
 
 const user = ref<User>({
+  id: '',
   name: '',
   age: null,
 })
-
-
 </script>
 
 <template>
@@ -29,8 +30,8 @@ const user = ref<User>({
     <legend>Персональные данные</legend>
 
     <ul>
-      <li v-for="field in fields" :key="field.id">
-        <InputCustom v-model:inputValue="user[field.id]" :input-fields="field" />
+      <li v-for="field in fields" :key="field.type">
+        <InputCustom v-model:inputValue="user[field.type]" :input-fields="field" />
       </li>
     </ul>
   </fieldset>
@@ -41,8 +42,6 @@ const user = ref<User>({
 @import '@/assets/styles/_variables';
 
 .form-user {
-  padding: 20px;
-
   & legend {
     margin: 0 0 1.25rem;
     font-weight: 500;
@@ -52,7 +51,6 @@ const user = ref<User>({
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
-    inline-size: 616px;
   }
 }
 </style>

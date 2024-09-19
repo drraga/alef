@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <img src="../assets/icons/LogoCo.svg" alt="">
+    <img src="@/assets/icons/LogoCo.svg" alt="">
 
     <nav>
       <ul class="header__nav-links">
@@ -24,7 +24,11 @@
 
   & > img {
     position: absolute;
-    left:  5.5rem;
+    left: min(5.5rem, 6.4%);
+
+    @include mq(379) {
+      display: none;
+    }
   }
 
   & nav {
