@@ -4,19 +4,6 @@ import InputCustom from '@/components/ui/InputCustom.vue';
 import ButtonAction from '@/components/form-elements/ButtonAction.vue';
 import IconPlus from '@/assets/icons/IconPlus.vue';
 
-// const children = [
-//   {
-//     id: '',
-//     name: 'Петр',
-//     age: 12
-//   },
-//   {
-//     id: '',
-//     name: 'Денис',
-//     age: 11
-//   }
-// ]
-
 const fields: InputEntity[] = [
   {
     type: 'name',
@@ -32,16 +19,20 @@ const fields: InputEntity[] = [
   }
 ]
 
-const children = ref([{
-  id: '',
-  name: '',
-  age: null,
-},
-{
-  id: '',
-  name: '',
-  age: null,
-}])
+const children = ref(
+  [
+    {
+      id: '',
+      name: '',
+      age: null,
+    },
+    {
+      id: '',
+      name: '',
+      age: null,
+    }
+  ]
+)
 </script>
 
 <template>
@@ -59,7 +50,7 @@ const children = ref([{
     </div>
 
 
-    <ul>
+    <ul v-if="children.length && children.length > 0">
       <li v-for="(child, index) in children" :key="index">
         <template v-for="(field, i) in fields" :key="i">
           <InputCustom :input-fields="field" v-model:inputValue="child[field.type]" />
@@ -95,7 +86,7 @@ const children = ref([{
     &:hover {
       & .icon-plus {
         transform: rotate(45deg);
-        
+
         & path {
           fill: getcolor('blue.darken1')
         }

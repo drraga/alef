@@ -38,12 +38,15 @@ const generateId = nanoid();
   }
 
   & input {
+    overflow: hidden;
     padding: 1.625rem 1rem 0.375rem;
     border: 1px solid getcolor('grey.lighten1');
     border-radius: 0.25rem;
     font-size: 0.875rem;
     inline-size: 100%;
     line-height: 1.5;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
     transition: border-color 0.25s ease-in-out;
 
     &:focus-visible {
